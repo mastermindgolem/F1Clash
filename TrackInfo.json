@@ -1,59 +1,78 @@
 {
     "Abu Dhabi": {
-        "laps": 8
+        "laps": 7,
+        "extra_pit_time": 7
 },
     "Austin": {
-        "laps": 8
+        "laps": 7,
+        "extra_pit_time": 2
 },
     "Baku": {
-        "laps": 8
+        "laps": 7,
+        "extra_pit_time": 5
 },
     "Barcelona": {
-        "laps": 8
+        "laps": 7,
+        "extra_pit_time": 5
 },
     "Imola": {
-        "laps": 8
+        "laps": 7,
+        "extra_pit_time": "N/A"
 },
     "Le Castellet": {
-        "laps": 8
+        "laps": 7,
+        "extra_pit_time": 5
 },
     "Melbourne": {
-        "laps": 8
+        "laps": 7,
+        "extra_pit_time": 4
 },
     "Mexico City": {
-        "laps": 8
+        "laps": 7,
+        "extra_pit_time": 5
 },
     "Mogyorod": {
-        "laps": 8
+        "laps": 7,
+        "extra_pit_time": 3
 },
     "Montreal": {
-        "laps": 8
+        "laps": 7,
+        "extra_pit_time": 2
 },
     "Monza": {
-        "laps": 8
+        "laps": 7,
+        "extra_pit_time": "N/A"
 },
     "Sakhir Desert": {
-        "laps": 8
+        "laps": 7,
+        "extra_pit_time": 3
 },
     "Sao Paulo": {
-        "laps": 8
+        "laps": 7,
+        "extra_pit_time": 6
 },
     "Silverstone": {
-        "laps": 7
+        "laps": 7,
+        "extra_pit_time": 3
 },
     "Singapore": {
-        "laps": 7
+        "laps": 7,
+        "extra_pit_time": 3
 },
     "Spielberg": {
-        "laps": 9
+        "laps": 7,
+        "extra_pit_time": 4
 },
     "Stavelot": {
-        "laps": 6
+        "laps": 7,
+        "extra_pit_time": 3
 },
     "Suzuka": {
-        "laps": 7
+        "laps": 7,
+        "extra_pit_time": 4
 },
     "Zandvoort": {
-        "laps": 7
+        "laps": 7,
+        "extra_pit_time": 4
 }
 }
