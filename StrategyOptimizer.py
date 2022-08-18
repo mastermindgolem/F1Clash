@@ -1,43 +1,40 @@
 import math
 from DriverStats import fetchDriverStats
 import json
-#S 3-4 28.889
-#M 3-5 29.976
-#H 4-6 31.777
 
-track = "Melbourne"
-track_list = json.loads(open("TrackInfo.json").read())
+#Track Name
+track = "Abu Dhabi"
+track_data = json.loads(open("TrackInfo.json").read())[track]
 
-fetchDriverStats(driverName="Hamilton", driverLevel="5", driverRarity="Epic")
 
 #Total Laps
-laps = track_list[track]['laps']
+laps = track_data['laps']
 starting_fuel = laps + 1.82
 #1 Pit Strat
 pitstop1 = True
 #2 Pit Strat
 pitstop2 = False
 #Laps to not pit on
-ignore_laps = []
+ignore_laps = [3,4]
 #Time lost by pitting
-pit_time = 7.84
+pit_time = track_data['extra_pit_time'] + 3.83
 
 #Tyre data from pre-race screen
 tyres = {
     "Soft": {
         "min": 2,
         "max": 3,
-        "time": 32.7
+        "time": 31.337
     },
     "Medium": {
         "min": 3,
         "max": 4,
-        "time": 33.5
+        "time": 32.703
     },
     "Hard": {
         "min": 3,
         "max": 5,
-        "time": 34.6
+        "time": 34.195
     }
 }
 
@@ -95,11 +92,9 @@ def simulateRace():
                             continue
                         #Check if you must service on first pit
                         if option_a[5] + option_b[5] > 1:
-                            service += 1
                             final_options.append([totaltime+2, fuel, service, option_a[:3], "SERVICE", option_b[:3], "PIT", option_c[:3]])
                         #Check if you must service on second pit
                         elif option_a[5] + option_b[5] + option_c[5] > 1:
-                            service += 1
                             final_options.append([totaltime+2, fuel, service, option_a[:3], "PIT", option_b[:3], "SERVICE", option_c[:3]])
                         else:
                             final_options.append([totaltime, fuel, service, option_a[:3], "PIT", option_b[:3], "PIT", option_c[:3]])
@@ -120,7 +115,6 @@ def simulateRace():
                         continue
                     #Check if service needed on pit
                     if option_a[5] + option_b[5] > 1:
-                        service += 1
                         final_options.append([totaltime+2, fuel, service, option_a[:3], "SERVICE", option_b[:3]])
                     else:
                         final_options.append([totaltime, fuel, service, option_a[:3], "PIT", option_b[:3]])
