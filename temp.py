@@ -4,12 +4,16 @@ import math
 #M 3-5 29.976
 #H 4-6 31.777
 
+#Total Laps
 laps = 8
+#1 Pit Strat
 pitstop1 = True
+#2 Pit Strat
 pitstop2 = True
+#Laps to not pit on
 ignore_laps = []
 
-
+#Tyre data from pre-race screen
 tyres = {
     "Soft": {
         "min": 3,
@@ -29,11 +33,12 @@ tyres = {
 }
 
 
-
+#Add all different stint options
 def tyre_selection():
     lap_options = []
     for t in tyres:
         for i in range(1,tyres[t]['max']+1):
+            #Format - TyreType, No. of laps, Mode, Time for all laps, Fuel for all laps, Service for all laps
             if i == tyres[t]['max']:
                 lap_options.append([t, i, "GREEN", tyres[t]['time']*1.1*i, 0.67*i, 0.08*i])
             elif i <= tyres[t]['min']:
