@@ -1,36 +1,43 @@
 import math
-
+from DriverStats import fetchDriverStats
+import json
 #S 3-4 28.889
 #M 3-5 29.976
 #H 4-6 31.777
 
+track = "Melbourne"
+track_list = json.loads(open("TrackInfo.json").read())
+
+fetchDriverStats(driverName="Hamilton", driverLevel="5", driverRarity="Epic")
+
 #Total Laps
-laps = 8
+laps = track_list[track]['laps']
+starting_fuel = laps + 1.82
 #1 Pit Strat
 pitstop1 = True
 #2 Pit Strat
-pitstop2 = True
+pitstop2 = False
 #Laps to not pit on
 ignore_laps = []
 #Time lost by pitting
-pit_time = 10
+pit_time = 7.84
 
 #Tyre data from pre-race screen
 tyres = {
     "Soft": {
-        "min": 3,
-        "max": 4,
-        "time": 28.762
+        "min": 2,
+        "max": 3,
+        "time": 32.7
     },
     "Medium": {
         "min": 3,
-        "max": 5,
-        "time": 30.024
+        "max": 4,
+        "time": 33.5
     },
     "Hard": {
-        "min": 4,
-        "max": 7,
-        "time": 31.820
+        "min": 3,
+        "max": 5,
+        "time": 34.6
     }
 }
 
@@ -44,7 +51,7 @@ def tyre_selection():
             if i == tyres[t]['max']:
                 lap_options.append([t, i, "GREEN", tyres[t]['time']*1.1*i, 0.67*i, 0.08*i])
             elif i <= tyres[t]['min']:
-                lap_options.append([t, i, "RED", tyres[t]['time']/1.1*i, 1.5*i, 0.25*i])
+                lap_options.append([t, i, "RED", tyres[t]['time']*0.9*i, 1.5*i, 0.25*i])
             else:
                 lap_options.append([t, i, "YELLOW", tyres[t]['time']*i, 1*i, 0.17*i])
     for a in lap_options:
@@ -76,11 +83,11 @@ def simulateRace():
             for option_b in list(filter(lambda x:x[1] == option[1], lap_options)):
                 for option_c in list(filter(lambda x:x[1] == option[2], lap_options)):
                     #Check if more than available fuel needed
-                    if option_a[4] + option_b[4] + option_c[4] < laps+1:
-                        #Find final fuel
-                        fuel = laps+1 - option_a[4] - option_b[4] - option_c[4]
-                        #Find final service
-                        service = 1 - option_a[5] - option_b[5] - option_c[5]
+                    if option_a[4] + option_b[4] + option_c[4] < starting_fuel:
+                        #Find final used
+                        fuel = option_a[4] + option_b[4] + option_c[4]
+                        #Find service used
+                        service = option_a[5] + option_b[5] + option_c[5]
                         #Find total race time
                         totaltime = option_a[3] + option_b[3] + option_c[3] + pit_time*2
                         #Don't continue if pitting lap will result in traffic
@@ -101,11 +108,11 @@ def simulateRace():
         for option_a in list(filter(lambda x:x[1] == option[0], lap_options)):
             for option_b in list(filter(lambda x:x[1] == option[1], lap_options)):
                 #Check if more than available fuel needed
-                if option_a[4] + option_b[4] < laps+1:
-                    #Find final fuel
-                    fuel = laps+1 - option_a[4] - option_b[4]
-                    #Find final service
-                    service = 1 - option_a[5] - option_b[5]
+                if option_a[4] + option_b[4] < starting_fuel:
+                    #Find fuel used
+                    fuel = option_a[4] + option_b[4]
+                    #Find service used
+                    service = option_a[5] + option_b[5]
                     #Find total race time
                     totaltime = option_a[3] + option_b[3] + pit_time
                     #Don't continue if pitting lap results in traffic
