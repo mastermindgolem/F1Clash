@@ -12,6 +12,8 @@ pitstop1 = True
 pitstop2 = True
 #Laps to not pit on
 ignore_laps = []
+#Time lost by pitting
+pit_time = 10
 
 #Tyre data from pre-race screen
 tyres = {
@@ -80,7 +82,7 @@ def simulateRace():
                         #Find final service
                         service = 1 - option_a[5] - option_b[5] - option_c[5]
                         #Find total race time
-                        totaltime = option_a[3] + option_b[3] + option_c[3]
+                        totaltime = option_a[3] + option_b[3] + option_c[3] + pit_time*2
                         #Don't continue if pitting lap will result in traffic
                         if option_a[1] in ignore_laps or option_a + option_b in ignore_laps:
                             continue
@@ -105,7 +107,7 @@ def simulateRace():
                     #Find final service
                     service = 1 - option_a[5] - option_b[5]
                     #Find total race time
-                    totaltime = option_a[3] + option_b[3]
+                    totaltime = option_a[3] + option_b[3] + pit_time
                     #Don't continue if pitting lap results in traffic
                     if option_a[1] in ignore_laps:
                         continue
