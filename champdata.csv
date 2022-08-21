@@ -1,0 +1,220 @@
+Suzuka,1,M,4,H,3,,,,1
+Suzuka,2,M,4,H,3,,,,1
+Suzuka,3,S,3,M,4,,,,1
+Suzuka,4,H,4,M,3,,,,1
+Suzuka,5,M,3,H,4,,,,1
+Suzuka,6,M,4,H,3,,,,1
+Suzuka,7,H,4,M,3,,,,1
+Suzuka,8,S,3,H,4,,,,1
+Suzuka,9,M,3,H,4,,,,1
+Suzuka,10,H,4,M,3,,,,1
+Suzuka,11,S,3,H,4,,,,1
+Suzuka,12,H,4,H,3,,,,1
+Suzuka,13,H,4,M,3,,,,1
+Suzuka,14,H,4,H,3,,,,1
+Suzuka,15,H,4,S,3,,,,1
+Suzuka,16,M,3,H,4,,,,1
+Suzuka,17,S,2,M,3,5,S,2,2
+Suzuka,18,H,4,H,3,,,,1
+Suzuka,19,H,4,H,3,,,,1
+Suzuka,20,M,3,S,3,6,S,1,2
+Mexico City,1,H,6,S,2,,,,1
+Mexico City,2,H,6,S,2,,,,1
+Mexico City,3,S,4,M,4,,,,1
+Mexico City,4,M,5,S,3,,,,1
+Mexico City,5,S,4,M,4,,,,1
+Mexico City,6,H,6,S,2,,,,1
+Mexico City,7,M,5,S,3,,,,1
+Mexico City,8,M,5,S,3,,,,1
+Mexico City,9,H,6,S,2,,,,1
+Mexico City,10,M,5,S,3,,,,1
+Mexico City,11,H,6,S,2,,,,1
+Mexico City,12,S,4,H,4,,,,1
+Mexico City,13,M,4,M,4,,,,1
+Mexico City,14,S,3,H,5,,,,1
+Mexico City,15,M,5,M,3,,,,1
+Mexico City,16,M,4,M,4,,,,1
+Mexico City,17,M,5,M,3,,,,1
+Mexico City,18,H,5,M,3,,,,1
+Mexico City,19,H,5,S,3,,,,1
+Mexico City,20,H,5,S,3,,,,1
+Spielberg,1,S,4,H,5,,,,1
+Spielberg,2,M,5,M,4,,,,1
+Spielberg,3,M,5,M,4,,,,1
+Spielberg,4,H,6,S,3,,,,1
+Spielberg,5,S,4,H,5,,,,1
+Spielberg,6,S,4,S,4,8,S,1,2
+Spielberg,7,S,4,M,5,,,,1
+Spielberg,8,H,6,S,3,,,,1
+Spielberg,9,S,4,S,4,8,S,1,2
+Spielberg,10,M,5,M,4,,,,1
+Spielberg,11,H,6,M,3,,,,1
+Spielberg,12,M,4,H,5,,,,1
+Spielberg,13,H,6,M,3,,,,1
+Spielberg,14,H,5,M,4,,,,1
+Spielberg,15,S,4,M,5,,,,1
+Spielberg,16,H,5,H,4,,,,1
+Spielberg,17,S,3,S,3,6,S,3,2
+Spielberg,18,H,5,M,4,,,,1
+Spielberg,19,H,5,M,4,,,,1
+Spielberg,20,M,5,H,4,,,,1
+Suzuka,1,M,4,H,3,,,,1
+Suzuka,2,M,4,H,3,,,,1
+Suzuka,3,M,4,H,3,,,,1
+Suzuka,4,M,4,H,3,,,,1
+Suzuka,5,H,4,M,3,,,,1
+Suzuka,6,H,4,M,3,,,,1
+Suzuka,7,S,3,S,3,6,S,1,2
+Suzuka,8,H,4,M,3,,,,1
+Suzuka,9,S,3,M,4,,,,1
+Suzuka,10,H,4,M,3,,,,1
+Suzuka,11,M,3,H,4,,,,1
+Suzuka,12,H,4,M,3,,,,1
+Suzuka,13,M,3,H,4,,,,1
+Suzuka,14,M,3,H,4,,,,1
+Suzuka,15,S,2,S,2,4,M,3,2
+Suzuka,16,H,4,H,3,,,,1
+Suzuka,17,H,4,H,3,,,,1
+Suzuka,18,S,2,H,4,6,S,1,2
+Suzuka,19,H,3,M,3,6,S,1,2
+Suzuka,20,M,3,S,3,6,S,1,2
+Mexico City,1,S,4,M,4,,,,1
+Mexico City,2,S,4,M,4,,,,1
+Mexico City,3,S,4,M,4,,,,1
+Mexico City,4,M,5,S,3,,,,1
+Mexico City,5,S,4,M,4,,,,1
+Mexico City,6,H,6,S,2,,,,1
+Mexico City,7,H,6,S,2,,,,1
+Mexico City,8,M,5,S,3,,,,1
+Mexico City,9,H,6,S,2,,,,1
+Mexico City,10,S,4,H,4,,,,1
+Mexico City,11,M,5,S,3,,,,1
+Mexico City,12,M,4,M,4,,,,1
+Mexico City,13,M,5,S,3,,,,1
+Mexico City,14,S,3,H,5,,,,1
+Mexico City,15,H,5,S,3,,,,1
+Mexico City,16,M,4,M,4,,,,1
+Mexico City,17,H,5,M,3,,,,1
+Mexico City,18,H,5,S,3,,,,1
+Mexico City,19,M,5,M,3,,,,1
+Mexico City,20,S,4,H,4,,,,1
+France,1,S,3,S,3,6,S,2,2
+France,2,S,3,H,4,7,S,1,2
+France,3,S,3,M,3,6,S,2,2
+France,4,M,3,S,3,6,S,2,2
+France,5,H,4,H,4,,,,1
+France,6,M,3,S,3,6,S,2,2
+France,7,M,3,M,3,6,S,2,2
+France,8,H,4,S,3,7,S,1,2
+France,9,M,3,S,3,6,S,2,2
+France,10,H,4,S,3,7,S,1,2
+France,11,M,3,H,4,7,S,1,2
+France,12,S,2,H,4,6,M,2,2
+France,13,H,4,S,2,6,S,2,2
+France,14,S,3,H,4,7,S,1,2
+France,15,S,2,M,3,5,M,3,2
+France,16,H,3,S,2,5,H,3,2
+France,17,M,3,M,3,6,S,2,2
+France,18,H,4,S,2,6,S,2,2
+France,19,H,4,M,3,7,S,1,2
+France,20,S,2,S,2,4,H,4,2
+Spielberg,1,M,5,M,4,,,,1
+Spielberg,2,H,6,S,3,,,,1
+Spielberg,3,S,4,H,5,,,,1
+Spielberg,4,H,6,S,3,,,,1
+Spielberg,5,M,5,M,4,,,,1
+Spielberg,6,S,4,M,5,,,,1
+Spielberg,7,H,6,S,3,,,,1
+Spielberg,8,S,4,H,5,,,,1
+Spielberg,9,M,5,M,4,,,,1
+Spielberg,10,H,5,M,4,,,,1
+Spielberg,11,M,4,H,5,,,,1
+Spielberg,12,H,5,M,4,,,,1
+Spielberg,13,M,5,M,4,,,,1
+Spielberg,14,M,4,H,5,,,,1
+Spielberg,15,M,5,H,4,,,,1
+Spielberg,16,H,5,H,4,,,,1
+Spielberg,17,S,3,M,5,8,S,1,2
+Spielberg,18,M,5,H,4,,,,1
+Spielberg,19,H,5,H,4,,,,1
+Spielberg,20,H,5,M,4,,,,1
+Austin,1,S,3,S,3,6,S,2,2
+Austin,2,H,5,M,3,,,,1
+Austin,3,M,4,H,4,,,,1
+Austin,4,H,5,H,3,,,,1
+Austin,5,M,4,H,4,,,,1
+Austin,6,H,4,H,4,,,,1
+Austin,7,M,4,M,4,,,,1
+Austin,8,H,4,H,4,,,,1
+Austin,9,H,5,H,3,,,,1
+Austin,10,S,3,M,4,7,S,1,2
+Austin,11,M,4,M,4,,,,1
+Austin,12,M,3,H,4,7,S,1,2
+Austin,13,H,4,H,4,,,,1
+Austin,14,S,3,M,4,7,S,1,2
+Austin,15,M,4,M,4,,,,1
+Austin,16,H,4,M,4,,,,1
+Austin,17,S,3,S,3,6,M,2,2
+Austin,18,M,3,H,4,7,S,1,2
+Austin,19,H,4,S,3,7,S,1,2
+Austin,20,H,4,M,3,7,S,1,2
+Barcelona,1,S,4,H,4,,,,1
+Barcelona,2,M,5,M,3,,,,1
+Barcelona,3,M,5,M,3,,,,1
+Barcelona,4,S,3,H,5,,,,1
+Barcelona,5,H,5,S,3,,,,1
+Barcelona,6,S,3,H,5,,,,1
+Barcelona,7,S,4,H,4,,,,1
+Barcelona,8,M,4,M,4,,,,1
+Barcelona,9,M,4,M,4,,,,1
+Barcelona,10,H,4,M,4,,,,1
+Barcelona,11,H,5,S,3,,,,1
+Barcelona,12,S,3,H,5,,,,1
+Barcelona,13,M,4,M,4,,,,1
+Barcelona,14,H,5,S,3,,,,1
+Barcelona,15,S,3,S,3,6,S,2,2
+Barcelona,16,H,5,M,3,,,,1
+Barcelona,17,H,5,M,3,,,,1
+Barcelona,18,S,3,M,4,7,S,1,2
+Barcelona,19,M,4,H,4,,,,1
+Barcelona,20,S,3,S,3,6,S,2,2
+Austin,1,S,3,H,5,,,,1
+Austin,2,M,4,H,4,,,,1
+Austin,3,M,4,H,4,,,,1
+Austin,4,M,4,M,4,,,,1
+Austin,5,H,5,H,3,,,,1
+Austin,6,H,5,H,3,,,,1
+Austin,7,H,4,H,4,,,,1
+Austin,8,M,4,S,3,7,S,1,2
+Austin,9,H,5,M,3,,,,1
+Austin,10,S,3,M,4,7,S,1,2
+Austin,11,S,3,M,4,7,S,1,2
+Austin,12,M,4,S,3,7,S,1,2
+Austin,13,H,4,H,4,,,,1
+Austin,14,S,3,S,3,6,S,2,2
+Austin,15,S,3,M,4,7,S,1,2
+Austin,16,M,3,M,3,6,S,2,2
+Austin,17,M,3,M,4,7,S,1,2
+Austin,18,H,4,M,4,,,,1
+Austin,19,H,4,H,4,,,,1
+Austin,20,H,4,H,4,,,,1
+Barcelona,1,M,5,M,3,,,,1
+Barcelona,2,H,5,S,3,,,,1
+Barcelona,3,M,5,M,3,,,,1
+Barcelona,4,H,5,S,3,,,,1
+Barcelona,5,M,4,M,4,,,,1
+Barcelona,6,H,5,S,3,,,,1
+Barcelona,7,S,4,H,4,,,,1
+Barcelona,8,S,3,H,5,,,,1
+Barcelona,9,S,3,H,5,,,,1
+Barcelona,10,S,3,H,5,,,,1
+Barcelona,11,M,4,H,4,,,,1
+Barcelona,12,H,5,S,3,,,,1
+Barcelona,13,S,3,H,5,,,,1
+Barcelona,14,S,3,H,5,,,,1
+Barcelona,15,M,4,H,4,,,,1
+Barcelona,16,S,3,H,5,,,,1
+Barcelona,17,M,4,H,4,,,,1
+Barcelona,18,S,3,H,5,,,,1
+Barcelona,19,M,4,H,4,,,,1
+Barcelona,20,M,4,H,4,,,,1

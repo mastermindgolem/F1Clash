@@ -3,38 +3,38 @@ from DriverStats import fetchDriverStats
 import json
 
 #Track Name
-track = "Abu Dhabi"
+track = "Barcelona"
 track_data = json.loads(open("TrackInfo.json").read())[track]
 
 
 #Total Laps
 laps = track_data['laps']
-starting_fuel = laps + 1.82
+starting_fuel = laps + 1.83
 #1 Pit Strat
 pitstop1 = True
 #2 Pit Strat
-pitstop2 = False
+pitstop2 = True
 #Laps to not pit on
 ignore_laps = [3,4]
 #Time lost by pitting
-pit_time = track_data['extra_pit_time'] + 3.83
+pit_time = track_data['extra_pit_time'] + 4.8
 
 #Tyre data from pre-race screen
 tyres = {
     "Soft": {
-        "min": 2,
-        "max": 3,
-        "time": 31.337
+        "min": 3,
+        "max": 4,
+        "time": 28.928
     },
     "Medium": {
         "min": 3,
-        "max": 4,
-        "time": 32.703
+        "max": 5,
+        "time": 30.216
     },
     "Hard": {
-        "min": 3,
-        "max": 5,
-        "time": 34.195
+        "min": 4,
+        "max": 6,
+        "time": 31.992
     }
 }
 
@@ -88,7 +88,7 @@ def simulateRace():
                         #Find total race time
                         totaltime = option_a[3] + option_b[3] + option_c[3] + pit_time*2
                         #Don't continue if pitting lap will result in traffic
-                        if option_a[1] in ignore_laps or option_a + option_b in ignore_laps:
+                        if option_a[1] in ignore_laps or option_a[1] + option_b[1] in ignore_laps:
                             continue
                         #Check if you must service on first pit
                         if option_a[5] + option_b[5] > 1:
