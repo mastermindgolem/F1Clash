@@ -3,7 +3,7 @@ from DriverStats import fetchDriverStats
 import json
 
 #Track Name
-track = "Barcelona"
+track = "Austin"
 track_data = json.loads(open("TrackInfo.json").read())[track]
 
 
@@ -15,26 +15,26 @@ pitstop1 = True
 #2 Pit Strat
 pitstop2 = True
 #Laps to not pit on
-ignore_laps = [3,4]
+ignore_laps = [4]
 #Time lost by pitting
-pit_time = track_data['extra_pit_time'] + 4.8
+pit_time = track_data['extra_pit_time'] + 3.55
 
 #Tyre data from pre-race screen
 tyres = {
     "Soft": {
         "min": 3,
         "max": 4,
-        "time": 28.928
+        "time": 31.916
     },
     "Medium": {
         "min": 3,
-        "max": 5,
-        "time": 30.216
+        "max": 4,
+        "time": 32.930
     },
     "Hard": {
-        "min": 4,
-        "max": 6,
-        "time": 31.992
+        "min": 3,
+        "max": 5,
+        "time": 34.144
     }
 }
 

@@ -41,7 +41,7 @@
 },
     "Monza": {
         "laps": 8,
-        "extra_pit_time": "N/A"
+        "extra_pit_time": 5
 },
     "Sakhir Desert": {
         "laps": 8,
