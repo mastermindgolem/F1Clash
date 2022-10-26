@@ -1,5 +1,4 @@
 import math
-from DriverStats import fetchDriverStats
 import json
 
 #Track Name

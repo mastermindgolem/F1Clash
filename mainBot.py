@@ -7,11 +7,12 @@ import time
 from driver_stats.DriverStats import fetchDriverStats
 from component_stats.ComponentStats import fetchCompStats
 from race_debrief.write_to_csv import write_race_debrief
+import os
 
 
 bot = discord.Bot()
 invite_link = "https://discord.com/api/oauth2/authorize?client_id=1011606897729732708&permissions=517543840832&scope=bot"
-bot_token = "MTAxMTYwNjg5NzcyOTczMjcwOA.GtZL93.J3BW1PKJ8ztGvfVpo1wjuvMHjsPFz69X9q8Nmg"
+bot_token = "MTAxMTYwNjg5NzcyOTczMjcwOA.GRfWAV.VKJwtGKFwqrQPYTlN8KpvuQp8pWr0rL8NMwZ8E"
 boostedDrivers = []
 boostedComps = []
 
