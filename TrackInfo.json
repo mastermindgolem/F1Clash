@@ -19,6 +19,10 @@
         "laps": 8,
         "extra_pit_time": "N/A"
 },
+    "Jeddah": {
+        "laps": 8,
+        "extra_pit_time": "N/A"
+},
     "Le Castellet": {
         "laps": 8,
         "extra_pit_time": 5
@@ -30,6 +34,10 @@
     "Mexico City": {
         "laps": 8,
         "extra_pit_time": 5
+},
+    "Miami": {
+        "laps": 8,
+        "extra_pit_time": "N/A"
 },
     "Mogyorod": {
         "laps": 8,
