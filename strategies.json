@@ -1,0 +1,30 @@
+{
+    "Stavelot, Belgium": {
+        "Characteristics": ["Aero", "Grip"],
+        "Overtaking Zones": [1,6,10,11,17],
+        "Track Image": "https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Belgium_Circuit.png.transform/7col-retina/image.png",
+        "Dry": {
+            "Front": [
+                {"strategy1": "2S | 2S | 2S", "boost1": "Deadfast", "strategy2": "3M | 3M", "boost2": "Eagle"}
+                ],
+            "Mid": [
+                {"strategy1": "2S | 2S | 2S", "boost1": "Deadfast", "strategy2": "3M | 3M", "boost2": "Nazar"}
+                ],
+            "Back": [
+                {"strategy1": "3M | 3M", "boost1": "Deadfast", "strategy2": "4H | 2S", "boost2": "Eagle"}
+                ]
+        },
+        "Wet": {
+            "Front": [
+                {"strategy1": "2W | 2W | 2W", "boost1": "Tune-in", "strategy2": "3W | 3W", "boost2": "Hex"}
+                ],
+            "Mid": [
+                {"strategy1": "3W | 3W", "boost1": "Tune-in", "strategy2": "3W | 3W", "boost2": "Hex"}
+                ],
+            "Back": [
+                {"strategy1": "4W | 2W", "boost1": "Frost", "strategy2": "3W | 3W", "boost2": "Hex"}
+                ]
+        }
+    }
+    
+}

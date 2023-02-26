@@ -1,0 +1,10 @@
+Crate,Coin,Boost,Bucks,Common,Rare,Epic
+Standard,1,0,1,1,1,0
+Standard,1,0,0,1,2,0
+Standard,0,0,0,2,1,0
+Gold,1,0,0,2,2,1
+Standard,0,0,0,1,1,1
+Gold,0,0,1,2,1,1
+Gold,0,1,0,2,1,1
+Standard,0,1,0,1,1,1
+Gold,0,0,1,2,1,1
