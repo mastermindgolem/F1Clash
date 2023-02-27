@@ -171,7 +171,7 @@ async def comparedrivers(
         driver1_data["Max Quali"] = int(driver1_data["Overtaking"]*driver1_data["Multiplier"])+int(driver1_data["Defending"]*driver1_data["Multiplier"])+int(
             driver1_data["Fuel Use"]*driver1_data["Multiplier"])+int(driver1_data["Tyre Mgmt"]*driver1_data["Multiplier"])
         driver2_data["Max Quali"] = int(driver2_data["Overtaking"]*driver2_data["Multiplier"])+int(driver2_data["Defending"]*driver2_data["Multiplier"])+int(
-            driver2_data["Fuel Use"]*driver2_data["Multiplier"])+int(driver2_data["Tyre Mgmt"]*driver1_data["Multiplier"])
+            driver2_data["Fuel Use"]*driver2_data["Multiplier"])+int(driver2_data["Tyre Mgmt"]*driver2_data["Multiplier"])
         driver1_data["Min Quali"] = driver1_data["Max Quali"] - \
             int(9930/(driver1_data["Consistency"] *
                 driver1_data["Multiplier"])-103.74)
