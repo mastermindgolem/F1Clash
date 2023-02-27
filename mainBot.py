@@ -300,11 +300,12 @@ async def boost(
 
 
 class PageButton(discord.ui.Button):
-    def __init__(self, page_name: str, page_color: ButtonStyle, page: discord.Embed, custom_id: str):
+    def __init__(self, page_name: str, page_color: ButtonStyle, page: discord.Embed, custom_id: str, row: int):
         super().__init__(
             label=page_name,
             style=page_color,
             custom_id=custom_id,
+            row=row
         )
         self.callback_page = page
 
@@ -371,22 +372,26 @@ async def strategy(
     pages[3].set_image(url=strategy['Track Image'])
 
     view = discord.ui.View(timeout=None)
-    view.add_item(PageButton("Front Strat", ButtonStyle.red, pages[0], "page1"))
-    view.add_item(PageButton("Mid Strat", ButtonStyle.green, pages[1], "page2"))
-    view.add_item(PageButton("Back Strat", ButtonStyle.blurple, pages[2], "page3"))
-    view.add_item(PageButton("Track Info", ButtonStyle.grey, pages[3], "page4"))
+    
+    view.add_item(PageButton(page_name="Front Strat", page_color=ButtonStyle.red, page=pages[0], custom_id="page1", row=0))
+    view.add_item(PageButton(page_name="Mid Strat", page_color=ButtonStyle.green, page=pages[1], custom_id="page2", row=0))
+    view.add_item(PageButton(page_name="Back Strat", page_color=ButtonStyle.blurple, page=pages[2], custom_id="page3", row=0))
+    view.add_item(EditStratButton(track=track))
+    view.add_item(PageButton(page_name="Track Info", page_color=ButtonStyle.grey, page=pages[3], custom_id="page4", row=1))
     view.add_item(EditInfoButton(track=track))
 
     await response.edit(content="", embed=page1, view=view)
     tracks = strategies.distinct("Track Name")
 
 
-class EditInfoButton(discord.ui.Button):
+
+class EditStratButton(discord.ui.Button):
     def __init__(self, track):
         super().__init__(
-            label="Edit Info",
+            label="Edit Strat",
             style=ButtonStyle.danger,
-            custom_id="edit_info",
+            custom_id="edit_strat",
+            row=0
         )
         self.track = track
 
@@ -433,6 +438,54 @@ class EditStrategy(discord.ui.Modal):
         
         await interaction.response.send_message(embeds=[embed], ephemeral=True)
 
+class EditInfoButton(discord.ui.Button):
+    def __init__(self, track):
+        super().__init__(
+            label="Edit Info",
+            style=ButtonStyle.danger,
+            custom_id="edit_info",
+            row=1
+        )
+        self.track = track
+
+    async def callback(self, interaction: discord.Interaction):
+        self.title = f"Editing Track Info for {self.track.split(',')[0]}"
+        modal = EditInfo(track=self.track, title=self.title)
+        await interaction.response.send_modal(modal)
+
+class EditInfo(discord.ui.Modal):
+    def __init__(self, track, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.track = track
+        self.current_strategy = strategies.find_one({"Track Name": self.track})
+        if "Characteristics" not in self.current_strategy:
+            self.current_strategy["Characteristics"] = ""
+        self.add_item(discord.ui.InputText(label='Characteristics (Separate with ", ")', style=discord.InputTextStyle.singleline, placeholder = ", ".join(self.current_strategy["Characteristics"]), required=False))
+        if "Overtaking Zones" not in self.current_strategy:
+            self.current_strategy["Overtaking Zones"] = []
+        self.add_item(discord.ui.InputText(label="Overtaking Zones (Integers only)", style=discord.InputTextStyle.singleline, placeholder=" ".join([str(i) for i in self.current_strategy["Overtaking Zones"]]), required=False))
+        
+    async def callback(self, interaction: discord.Interaction):
+        embed = discord.Embed(title=f"Editing Track Info for {self.track}")
+        if self.children[0].value != None:
+            c = str(self.children[0].value).split(", ")
+            if c == []:
+                c = self.current_strategy["Characteristics"]
+            embed.add_field(name="Characteristics ", value=c)
+            self.current_strategy["Characteristics"] = c
+        if self.children[1].value != None:
+            otz = [int(i) for i in str(self.children[1].value).split(" ")]
+            if otz == []:
+                otz = self.current_strategy["Overtaking Zones"]
+            embed.add_field(name="Overtaking Zones", value=otz)
+            self.current_strategy["Overtaking Zones"] = otz
+            
+        
+        
+        strategies.find_one_and_replace({"Track Name": self.track},self.current_strategy)
+        
+        
+        await interaction.response.send_message(embeds=[embed], ephemeral=True)
 
 @bot.slash_command(guild_ids=[963621040607600680], description="Show all available commands")
 async def help(
