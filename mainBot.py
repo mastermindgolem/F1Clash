@@ -73,19 +73,15 @@ async def driverstats(
             driver_data["Wet Ability"]*driver_data["Multiplier"]), inline=True)
         msg.add_field(name="Max Quali", value=int(driver_data["Overtaking"]*driver_data["Multiplier"])+int(driver_data["Defending"]*driver_data["Multiplier"])+int(
             driver_data["Fuel Use"]*driver_data["Multiplier"])+int(driver_data["Tyre Mgmt"]*driver_data["Multiplier"]), inline=True)
-        msg.add_field(name="Spread", value=int(
-            9930/(driver_data["Consistency"]*driver_data["Multiplier"])-103.74), inline=True)
-        msg.add_field(name="Min Quali", value=int(driver_data["Overtaking"]*driver_data["Multiplier"])+int(driver_data["Defending"]*driver_data["Multiplier"])+int(
-            driver_data["Fuel Use"]*driver_data["Multiplier"])+int(driver_data["Tyre Mgmt"]*driver_data["Multiplier"]) - int(9930/(driver_data["Consistency"]*driver_data["Multiplier"])-103.74), inline=True)
         msg.add_field(name="Cards For Upgrade",
-                      value=driver_data["Cards For Upgrade"], inline=False)
+                      value=driver_data["Cards For Upgrade"], inline=True)
         msg.add_field(name="Total Cards Needed",
-                      value=driver_data["Total Cards Needed"], inline=False)
+                      value=driver_data["Total Cards Needed"], inline=True)
         msg.add_field(name="Coins For Upgrade", value="{:,}".format(
-            driver_data["Coins For Upgrade"]), inline=False)
+            driver_data["Coins For Upgrade"]), inline=True)
         msg.add_field(name="Total Coins Needed", value="{:,}".format(
-            driver_data["Total Coins Needed"]), inline=False)
-        msg.add_field(name="Series", value=driver_data["Series"], inline=False)
+            driver_data["Total Coins Needed"]), inline=True)
+        msg.add_field(name="Series", value=driver_data["Series"], inline=True)
         await ctx.respond(embed=msg, ephemeral=True)
         print("Successfully replied to command")
     except Exception as e:
@@ -172,16 +168,10 @@ async def comparedrivers(
             driver1_data["Fuel Use"]*driver1_data["Multiplier"])+int(driver1_data["Tyre Mgmt"]*driver1_data["Multiplier"])
         driver2_data["Max Quali"] = int(driver2_data["Overtaking"]*driver2_data["Multiplier"])+int(driver2_data["Defending"]*driver2_data["Multiplier"])+int(
             driver2_data["Fuel Use"]*driver2_data["Multiplier"])+int(driver2_data["Tyre Mgmt"]*driver2_data["Multiplier"])
-        driver1_data["Min Quali"] = driver1_data["Max Quali"] - \
-            int(9930/(driver1_data["Consistency"] *
-                driver1_data["Multiplier"])-103.74)
-        driver2_data["Min Quali"] = driver2_data["Max Quali"] - \
-            int(9930/(driver2_data["Consistency"] *
-                driver2_data["Multiplier"])-103.74)
         msg = discord.Embed(
             title=f"{level1} {rarity1} {driver1} | {level2} {rarity2} {driver2}", color=discord.Color.blurple())
         for field in driver_data_fields:
-            if field != "Max Quali" and field != "Min Quali":
+            if field != "Max Quali":
                 driver1_data[field] = int(
                     driver1_data[field]*driver1_data["Multiplier"])
                 driver2_data[field] = int(
@@ -284,13 +274,13 @@ async def boost(
             for level in drivers.find({"Name": asset, "Rarity": rarity}).distinct("Level"):
                 drivers.find_one_and_update({"Name": asset, "Level": level, "Rarity": rarity}, {
                                             "$set": {"Multiplier": float(multiplier)}})
-                await response.edit(content=f"Level {level} {rarity} updated.")
+                await response.edit(content=f"Level {level} {rarity} updated.", ephemeral=True)
         await ctx.respond(f"Updated {asset}'s multiplier to {multiplier}.", ephemeral=True)
     elif asset in components.distinct("Name"):
         for level in components.find({"Name": asset}).distinct("Level"):
             components.find_one_and_update({"Name": asset, "Level": level}, {
                                            "$set": {"Multiplier": float(multiplier)}})
-            await response.edit(content=f"Level {level} updated.")
+            await response.edit(content=f"Level {level} updated.", ephemeral=True)
         await ctx.respond(f"Updated {asset}'s multiplier to {multiplier}.", ephemeral=True)
     else:
         await ctx.respond("An error has occured.", ephemeral=True)
