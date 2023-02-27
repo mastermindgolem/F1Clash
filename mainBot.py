@@ -29,12 +29,12 @@ for i in e:
 e = boost_emoji.find({})
 boost_replacements = {}
 for i in e:
-    boost_replacements[i['Boost']] = i['Emoji']
+    boost_replacements[i['Boost'].replace(" ","").replace("-","").lower()] = i['Emoji']
 
 
 bot = discord.Bot()
 invite_link = "https://discord.com/api/oauth2/authorize?client_id=1011606897729732708&permissions=517543840832&scope=bot"
-bot_token = json.loads(open("config.json").read())["token"]
+bot_token = open("token.txt").read()
 boostedDrivers = []
 boostedComps = []
 
@@ -319,8 +319,8 @@ def add_tyre_emoji(content: str):
 
 
 def add_boost_emoji(content: str):
-    if content in boost_replacements:
-        return content + boost_replacements[content]
+    if content.replace(" ","").replace("-","").lower() in boost_replacements:
+        return content + boost_replacements[content.replace(" ","").replace("-","").lower()]
     else:
         return content
 
@@ -335,6 +335,9 @@ async def strategy(
     track: Option(str, "Enter Track", autocomplete=show_tracks, required=True)
 ):
     global tracks
+    if ctx.channel.id != 1079430826904784996:
+        await ctx.respond("Please use this command in <#1079430826904784996> instead.", ephemeral=True)
+        return
     await ctx.defer()
     response = await ctx.respond("Fetching strategies...", ephemeral=True)
     strategy = strategies.find_one({"Track Name": track})
@@ -389,23 +392,24 @@ class EditInfoButton(discord.ui.Button):
 
     async def callback(self, interaction: discord.Interaction):
         self.start_pos = interaction.message.embeds[0].title.split(" ")[0]
-        self.title = f"Editing {self.start_pos} Strategy for {self.track}"
+        self.title = f"Editing {self.start_pos} Strategy for {self.track.split(',')[0]}"
         modal = EditStrategy(track=self.track, start_pos=self.start_pos, title=self.title)
         await interaction.response.send_modal(modal)
 
 class EditStrategy(discord.ui.Modal):
     def __init__(self, track, start_pos, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
-        self.add_item(discord.ui.Select(options=[discord.components.SelectOption(label="Dry", value="Dry"), discord.components.SelectOption(label="Wet", value="Wet")]))
-        self.add_item(discord.ui.InputText(label="Dry Strategy", style=discord.InputTextStyle.singleline, required=False))
-        self.add_item(discord.ui.InputText(label="Dry Boost", style=discord.InputTextStyle.singleline, required=False))
-        self.add_item(discord.ui.InputText(label="Wet Strategy", style=discord.InputTextStyle.singleline, required=False))
-        self.add_item(discord.ui.InputText(label="Wet Boost", style=discord.InputTextStyle.singleline, required=False))
+        self.add_item(discord.ui.InputText(label="Condition (Dry/Wet)", style=discord.InputTextStyle.singleline, min_length=3, max_length=3, placeholder='Input the race condition (Must be "Dry" or "Wet")', required=True))
+        self.add_item(discord.ui.InputText(label="D1 Strategy", style=discord.InputTextStyle.singleline, placeholder="Driver 1's tyre strategy", required=False))
+        self.add_item(discord.ui.InputText(label="D1 Boost", style=discord.InputTextStyle.singleline, placeholder="Driver 1's boost", required=False))
+        self.add_item(discord.ui.InputText(label="D2 Strategy", style=discord.InputTextStyle.singleline, placeholder="Driver 2's tyre strategy", required=False))
+        self.add_item(discord.ui.InputText(label="D2 Boost", style=discord.InputTextStyle.singleline, placeholder="Driver 2's boost", required=False))
         self.track = track
         self.start_pos = start_pos
         
     async def callback(self, interaction: discord.Interaction):
         embed = discord.Embed(title=f"Editing {self.start_pos} Strategy for {self.track}")
+        condition = self.children[0].value
         if self.children[1].value != None:
             d1_s = str(self.children[1].value).replace(" / "," | ").replace(" - "," | ").replace("/"," | ").replace("-"," | ").upper()
             embed.add_field(name="Driver 1 Strategy", value=d1_s)
@@ -419,20 +423,30 @@ class EditStrategy(discord.ui.Modal):
             d2_b = str(self.children[4].value)
             embed.add_field(name="Driver 2 Boost", value=d2_b)
             
-        await interaction.response.send_message(embeds=[embed])
-        
         current_strategy = strategies.find_one({"Track Name": self.track})
-        if "Dry" not in current_strategy:
-            current_strategy["Dry"] = {"Front": [], "Mid": [], "Back": []}
-        current_strategy["Dry"][self.start_pos].append({})
+        
+        if condition not in current_strategy:
+            current_strategy[condition] = {"Front": [], "Mid": [], "Back": []}
+        current_strategy[condition][self.start_pos].append({"strategy1": d1_s, "boost1": d1_b, "strategy2": d2_s, "boost2": d2_b})
+        strategies.find_one_and_replace({"Track Name": self.track},current_strategy)
+        
+        
+        await interaction.response.send_message(embeds=[embed], ephemeral=True)
 
 
-@bot.slash_command(guild_ids=[963621040607600680], description="Show custom emojis available")
-async def emojis(
+@bot.slash_command(guild_ids=[963621040607600680], description="Show all available commands")
+async def help(
     ctx: discord.AutocompleteContext
 ):
-    modal = EditStrategy(title="Modal via Slash Command")
-    await ctx.send_modal(modal)
+    embed = discord.Embed(title = "Morgan F1 Bot Commands", color=discord.Color.blurple())
+    embed.add_field(name="`/help`", value = "Displays this help message.", inline=False)
+    embed.add_field(name="`/driverstats [driver] [rarity] [level]`", value = "Displays the stats for a certain driver at a given rarity and level. All fields are required.", inline=False)
+    embed.add_field(name="`/compstats [component] [level]`", value = "Display the stats for a component at a given level. All fields are required.", inline=False)
+    embed.add_field(name="`/comparedrivers [driver1] [rarity1] [level1] [driver2] [rarity2] [level2]`", value = "Compares the stats for 2 drivers. All fields are required.", inline=False)
+    embed.add_field(name="`/compareparts [componen1] [level1] [component2] [level2]`", value = "Compares the stats for 2 components. All fields are required.", inline=False)
+    embed.add_field(name="`/boost [driver/component] [multiplier]`", value = "Boosts/Unboosts an asset by the multiplier. Used for stat boosts during GP events. All fields are required.", inline=True)
+    embed.add_field(name="`/strategy [track]`", value = "Displays the strategies for that track, sorted into front/mid/back of the grid based on your starting position.\nCan navigate through each set of strategies using the buttons at the bottom.\nTrack Info page gives a map of the track, along with the best stats to have on that track, along with overtaking zones.\nEdit Info button to be used to add any strategy to the current page you are on. Make sure the boost is a valid boost, and enter the correct race condition.", inline=False)
+    await ctx.respond(embeds = [embed])
 
 
 @bot.event
