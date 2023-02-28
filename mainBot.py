@@ -9,8 +9,7 @@ import math
 import discord
 from discord import Component, ActionRow, ButtonStyle, InteractionType
 from discord.components import SelectOption, Button, ButtonStyle, SelectMenu
-client = pymongo.MongoClient(
-    "mongodb+srv://golem:OHPwJCrwdufNxsWE@f1clash.cuqr1gk.mongodb.net/?retryWrites=true&w=majority")
+client = pymongo.MongoClient(json.loads(open("config.json").read())["mongoURI"])
 d = client.F1Clash
 drivers = d.drivers
 components = d.components
@@ -34,7 +33,7 @@ for i in e:
 
 bot = discord.Bot()
 invite_link = "https://discord.com/api/oauth2/authorize?client_id=1011606897729732708&permissions=517543840832&scope=bot"
-bot_token = open("token.txt").read()
+bot_token = json.loads(open("config.json").read())["botToken"]
 boostedDrivers = []
 boostedComps = []
 
