@@ -2,50 +2,39 @@ import pymongo, csv, json
 
 client = pymongo.MongoClient("mongodb+srv://golem:OHPwJCrwdufNxsWE@f1clash.cuqr1gk.mongodb.net/?retryWrites=true&w=majority")
 d = client.F1Clash
-db = d.boost_emojis
-data = []
-e = """<:self_control:1079260618361688064> 
-<:warrior:1079260664540975114> 
-<:ballast:1079261453871226900> 
-<:instinct:1079260547863826462> 
-<:downforce:1079260494105415710> 
-<:hex:1079260538191741027> 
-<:unstoppable:1079260653782569017> 
-<:samba:1079260609050316800> 
-<:tune_in:1079260648988475463> 
-<:rooster:1079260604205899796> 
-<:firework:1079260513344704562> 
-<:prince:1079260589441962064> 
-<:djinn:1079260489407791196> 
-<:oud:1079260574711558204> 
-<:cuppa:1079260479534407783> 
-<:eternal_flame:1079260509003599922> 
-<:eagle:1079260503802642482> 
-<:taurus:1079260633012371486> 
-<:skull:1079260622992195694> 
-<:iron_force:1079260551932284949> 
-<:lumberjack:1079260556717985802> 
-<:palm:1079260579170091008> 
-<:cranberry:1079260476787130378> 
-<:gladiator:1079260522572165190> 
-<:butterfly:1079262327238570044> 
-<:street_shark:1079260627421372477> 
-<:schooner:1079260613185908807> 
-<:merlion:1079260561063293020> 
-<:tsar:1079260635369578496> 
-<:frost:1079260518562410607> 
-<:nazar:1079260570081050626> 
-<:tulip:1079260640146894888> 
-<:dead_fast:1079260483724509215> 
-<:hook:1079260543715651614> 
-<:herald:1079260532474912839> 
-<:rainbow:1079260594470924288> 
-<:eclipse:1079262834912923738>
-<:dragon:1079260499235061813>
-<:pretzel:1079262329960669314>
-<:movember:1079260565433766008>
-<:reindeer:1079260599327920199>
-<:vice:1079260659402940476>"""
-for line in e.split("\n"):
-    data.append({"Boost": line.split(":")[1].replace("_"," ").title(), "Emoji": line.replace(" ","")})
+db = d.strategies
+data = [
+    {
+        "Track Name": "Bahrain",
+        "Characteristics": [],
+        "Overtaking Zones": [],
+        "Track Image": "https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Bahrain_Circuit.png.transform/7col-retina/image.png",
+        "Dry": {"Front":[], "Mid":[], "Back":[]},
+        "Wet": {"Front":[], "Mid":[], "Back":[]}
+    },
+    {
+        "Track Name": "Abu Dhabi",
+        "Characteristics": [],
+        "Overtaking Zones": [],
+        "Track Image": "https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Abu_Dhabi_Circuit.png.transform/7col-retina/image.png",
+        "Dry": {"Front":[], "Mid":[], "Back":[]},
+        "Wet": {"Front":[], "Mid":[], "Back":[]}
+    },
+    {
+        "Track Name": "Miami",
+        "Characteristics": [],
+        "Overtaking Zones": [],
+        "Track Image": "https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Miami_Circuit.png.transform/7col-retina/image.png",
+        "Dry": {"Front":[], "Mid":[], "Back":[]},
+        "Wet": {"Front":[], "Mid":[], "Back":[]}
+    },
+    {
+        "Track Name": "Jeddah",
+        "Characteristics": [],
+        "Overtaking Zones": [],
+        "Track Image": "https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Saudi_Arabia_Circuit.png.transform/7col-retina/image.png",
+        "Dry": {"Front":[], "Mid":[], "Back":[]},
+        "Wet": {"Front":[], "Mid":[], "Back":[]}
+    }
+]
 db.insert_many(data)
